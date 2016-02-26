@@ -1,0 +1,57 @@
+<%= form_for(@location) do |f| %>
+<% if @location.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved:</h2>
+
+	<ul>
+		<% @location.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+
+<div class="field">
+	<%= f.label :name %><br>
+	<%= f.text_field :name %>
+</div>
+<div class="field">
+	<%= f.label :address %><br>
+	<%= f.text_area :address %>
+</div>
+<div class="field">
+	<%= f.label :phone %><br>
+	<%= f.text_field :phone %>
+</div>
+<div class="field">
+	<%= f.label :hours %><br>
+	<%= f.text_area :hours %>
+</div>
+<div class="field">
+	<%= f.label :staffed %><br>
+	<%= f.check_box :staffed %>
+</div>
+<div class="field">
+	<%= f.label :description %><br>
+	<%= f.text_area :description %>
+</div>
+
+<ul class="">
+	<% Amenity.all.each do |amen| %>
+	<li>
+		<label>
+			<%= check_box_tag "location[amenity_ids][]", amen.id, f.object.amenities.include?(amen) %>
+			<%= amen.name %>
+		</label>
+	</li>
+	<% end %>
+</ul>
+
+
+
+<div class="actions">
+	<p>
+		<%= f.submit %>
+	</p>
+</div>
+<% end %>
