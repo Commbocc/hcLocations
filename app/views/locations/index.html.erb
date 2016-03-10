@@ -23,7 +23,7 @@
 	<tbody>
 		<% @locations.each do |location| %>
 			<tr>
-				<td><%= link_to location.name, edit_location_path(location) %></td>
+				<td><%= link_to location.name, location %></td>
 				<td>
 					<%= link_to raw("<i class='fa fa-map'></i>"), "https://www.google.com/maps/place/"+location.address, target: '_blank' if location.address %>
 				</td>
