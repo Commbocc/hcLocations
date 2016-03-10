@@ -2,7 +2,7 @@
 <% if @location.errors.any? %>
 <div id="error_explanation">
 	<h2><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved:</h2>
-
+	
 	<ul>
 		<% @location.errors.full_messages.each do |message| %>
 		<li><%= message %></li>
@@ -11,32 +11,74 @@
 </div>
 <% end %>
 
-<div class="field">
-	<%= f.label :name %><br>
-	<%= f.text_field :name %>
-</div>
-<div class="field">
-	<%= f.label :address %><br>
-	<%= f.text_area :address %>
-</div>
-<div class="field">
-	<%= f.label :phone %><br>
-	<%= f.text_field :phone %>
-</div>
-<div class="field">
-	<%= f.label :hours %><br>
-	<%= f.text_area :hours %>
-</div>
-<div class="field">
-	<%= f.label :staffed %><br>
-	<%= f.check_box :staffed %>
-</div>
-<div class="field">
-	<%= f.label :description %><br>
-	<%= f.text_area :description %>
+
+
+
+<div class="row">
+	<div class="col-sm-6">
+		<div class="form-group">
+			<%= f.label :name %><br>
+			<%= f.text_field :name, class: 'form-control' %>
+		</div>
+	</div>
+	<div class="col-sm-3">
+		<div class="form-group">
+			<%= f.label :ltype %><br>
+			<%= f.select(:ltype, ['Neighborhood Parks', 'Recreation Centers', 'Regional Parks', 'Skate Parks', 'Dog Parks', 'Athletics', 'Boat Ramp', 'Community Center'], {}, {class: 'form-control'}) %>
+		</div>
+	</div>
+	<div class="col-sm-3">
+		<div class="form-group">
+			<%= f.label :phone %><br>
+			<%= f.text_field :phone, class: 'form-control' %>
+		</div>
+	</div>
 </div>
 
-<ul class="">
+<div class="row">
+	<div class="col-sm-6">
+		<div class="form-group">
+			<%= f.label :address %><br>
+			<%= f.text_area :address, class: 'form-control' %>
+		</div>
+	</div>
+	<div class="col-sm-6">
+		<div class="form-group">
+			<%= f.label :hours %><br>
+			<%= f.text_area :hours, class: 'form-control' %>
+		</div>
+	</div>
+</div>
+
+<div class="form-group">
+	<%= f.label :description %><br>
+	<%= f.text_area :description, class: 'form-control' %>
+</div>
+
+<div class="row">
+	<div class="col-sm-4">
+		<div class="form-group">
+			<%= f.label :parking %><br>
+			<%= f.select(:parking, ['free', 'paid', 'none'], {}, {class: 'form-control'}) %>
+		</div>
+	</div>
+	<div class="col-sm-4">
+		<div class="form-group">
+			<%= f.label :restrooms %><br>
+			<%= f.check_box :restrooms %>
+		</div>
+	</div>
+	<div class="col-sm-4">
+		<div class="form-group">
+			<%= f.label :staffed %><br>
+			<%= f.check_box :staffed %>
+		</div>
+	</div>
+</div>
+
+<h3>Amenities</h3>
+
+<ul id="amenities" class="list-unstyled">
 	<% Amenity.all.each do |amen| %>
 	<li>
 		<label>
@@ -51,7 +93,7 @@
 
 <div class="actions">
 	<p>
-		<%= f.submit %>
+		<%= f.submit nil, class: 'btn btn-primary' %>
 	</p>
 </div>
 <% end %>
