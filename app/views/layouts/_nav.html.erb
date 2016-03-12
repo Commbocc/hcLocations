@@ -1,6 +1,8 @@
 <div class="container">
-    <ul class="nav nav-pills">
-        <%= content_tag :li, link_to('Locations', locations_path) %>
-        <%= content_tag :li, link_to('Amenities', amenities_path) %>
-    </ul>
+	<div class="page-header">
+		<ul class="nav nav-tabs">
+			<%= content_tag :li, link_to('Locations', locations_path), class: ( params[:controller] == 'locations' ? 'active' : nil ) %>
+			<%= content_tag :li, link_to('Amenities', amenities_path), class: ( params[:controller] == 'amenities' ? 'active' : nil ) %>
+		</ul>
+	</div>
 </div>
