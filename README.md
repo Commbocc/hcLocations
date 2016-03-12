@@ -1,3 +1,3 @@
 ## Heroku Status
 
-[![Heroku](https://heroku-badge.herokuapp.com/?app=hc-locations)]
+![Heroku](https://heroku-badge.herokuapp.com/?app=hc-locations)
