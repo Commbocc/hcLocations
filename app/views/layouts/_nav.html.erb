@@ -1,5 +1,8 @@
 <div class="container">
 	<div class="page-header">
+
+		<h1>Hillsborough County Locations</h1>
+
 		<ul class="nav nav-tabs">
 			<%= content_tag :li, link_to('Locations', locations_path), class: ( params[:controller] == 'locations' ? 'active' : nil ) %>
 			<%= content_tag :li, link_to('Amenities', amenities_path), class: ( params[:controller] == 'amenities' ? 'active' : nil ) %>
