@@ -1,8 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<%= content_tag :h2,  @location.name %>
+
 <p>
-	<strong>Name:</strong>
-	<%= @location.name %>
+	<strong>Type:</strong>
+	<%= @location.ltype %>
 </p>
 
 <p>
@@ -21,13 +23,13 @@
 </p>
 
 <p>
-	<strong>Staffed:</strong>
-	<%= @location.staffed %>
+	<strong>Description:</strong>
+	<%= @location.description %>
 </p>
 
 <p>
-	<strong>Description:</strong>
-	<%= @location.description %>
+	<strong>Staffed:</strong>
+	<%= @location.staffed %>
 </p>
 
 <p>
@@ -37,7 +39,7 @@
 
 <p>
 	<strong>Restrooms:</strong>
-	<%= @location.restrooms %>
+	<%= @location.restrooms ? 'true' : 'false' %>
 </p>
 
 <p>
@@ -50,4 +52,5 @@
 </p>
 
 <%= link_to 'Edit', edit_location_path(@location) %> |
-<%= link_to 'Back', locations_path %>
+<%= link_to 'Back', locations_path %> |
+<%= link_to 'Next', Location.where("id > ?", @location.id).first if Location.where("id > ?", @location.id).any? %>
